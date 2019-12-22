@@ -1,0 +1,75 @@
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+<link href="{% static '/app/css/main.css' %}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function check_fname(){
+
+            var f = document.frm.name.value;
+            var reg = /^[A-Za-z]+$/;
+            if(f.trim()==""){
+                document.getElementById("tops").innerHTML="Please Enter your firstname";
+            }else if(!reg.test(f)){
+                document.getElementById("tops").innerHTML="Please enter only Alphabet";
+            }else{
+                document.getElementById("tops").innerHTML="";
+            }
+        }
+        
+    </script>
+
+</head>
+<body>
+    <form action="{% url 'registar' %}" method="post" name="frm">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>id</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>
+                    <input type="text" name="name" onblur="check_fname();">
+                    <span> id="tops"</span>
+                </td>
+            </tr>
+            <tr>
+                <td>dob</td>
+                <td><input type="date" name="dob"></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>mobileno</td>
+                <td><input type="number" name="mobileno"></td>
+            </tr>
+            <tr>
+                <td>salary</td>
+                <td><input type="text" name="salary"></td>
+            </tr>
+            <tr>
+                
+                <td><input type="submit" value="submit"></td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>

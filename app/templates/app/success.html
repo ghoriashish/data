@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '/app/css/main.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <h1 align="center"> employee</h1>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table align="Center">
+            <tr>
+            
+                    <td>id</td>
+                <td>name </td>
+                <td>dob</td>
+                <td>password</td>
+                 <td>email</td>
+                <td>mobileno</td>
+                <td>salary</td>
+            </tr>
+            {% if key %}
+            {% for i in key %}
+                 <tr>
+                 
+                   <td>{{ i.id }}</td>
+                   <td>{{ i.name }}</td>
+                   <td>{{ i.dob }}</td>
+                   <td>{{ i.password }}</td>
+                   <td>{{ i.email }}</td>
+                   <td>{{ i.mobileno }}</td>
+                   <td>{{ i.salary }}</td>
+                  </tr>
+                {% endfor %}
+             {% endif %}
+
+        </table>
+    </form>
+</body>
+</html>
